@@ -3,3 +3,4 @@
 - [x] Verify navigation, mobile menu, placeholder links, reduced motion, and responsive presentation.
 - [x] Integrate the supplied official logo without changing the existing design.
 - [x] Refine text reveals and verify scrolling, accessibility, and existing controls.
+- [x] Point every "Join the Community" button at the official Telegram channel in a new tab.
