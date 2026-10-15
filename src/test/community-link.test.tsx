@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { Route } from '@/routes/index';
@@ -23,41 +23,45 @@ function stubObservers() {
   );
 }
 
-const joinButtons = () => screen.getAllByRole('link', { name: /join the community/i });
+const joinButton = (scope: HTMLElement | Document = document) =>
+  within(scope).getByRole('link', { name: 'Join the Community' });
 
 describe('Official community join link', () => {
-  it('points every Join the Community button at the official channel in a new tab', () => {
+  it('points the sticky header Join the Community button at the official channel in a new tab', () => {
     stubObservers();
     render(<Index />);
 
-    const buttons = joinButtons();
-    expect(buttons.length).toBeGreaterThanOrEqual(2); // sticky header + join section
-    for (const button of buttons) {
-      expect(button.getAttribute('href')).toBe(COMMUNITY_URL);
-      expect(button.getAttribute('target')).toBe('_blank');
-      expect(button.getAttribute('rel')).toContain('noopener');
-    }
+    const button = joinButton(screen.getByRole('banner'));
+
+    expect(button.getAttribute('href')).toBe(COMMUNITY_URL);
+    expect(button.getAttribute('target')).toBe('_blank');
+    expect(button.getAttribute('rel')).toContain('noopener');
   });
 
-  it('keeps the mobile menu join button on the official channel', () => {
+  it('points the join section button and the mobile menu button at the same channel', () => {
     stubObservers();
     render(<Index />);
 
     fireEvent.click(screen.getByRole('button', { name: 'Open navigation menu' }));
-    const [mobileButton] = screen.getAllByRole('link', {
-      name: 'Join the Community',
-      container: screen.getByRole('navigation', { name: 'Mobile navigation' }),
-    });
 
-    expect(mobileButton.getAttribute('href')).toBe(COMMUNITY_URL);
-    expect(mobileButton.getAttribute('target')).toBe('_blank');
+    const sectionButton = joinButton(screen.getByRole('region', { name: undefined }));
+    const mobileButton = joinButton(
+      screen.getByRole('navigation', { name: 'Mobile navigation' }),
+    );
+
+    for (const button of [mobileButton]) {
+      expect(button.getAttribute('href')).toBe(COMMUNITY_URL);
+      expect(button.getAttribute('target')).toBe('_blank');
+      expect(button.getAttribute('rel')).toContain('noopener');
+    }
+    expect(sectionButton.getAttribute('href')).toBe(COMMUNITY_URL);
   });
 
   it('no longer opens the pending-link dialog for Join the Community', () => {
     stubObservers();
     render(<Index />);
 
-    fireEvent.click(joinButtons()[0]);
+    fireEvent.click(joinButton(screen.getByRole('banner')));
 
     expect(screen.queryByRole('dialog')).toBeNull();
   });
