@@ -138,7 +138,7 @@
   .container-wide { width: calc(100% - 40px); }
   .site-nav { height: 72px; }
   .hero { padding-top: 126px; }
-  .hero h1 { font-size: 48px; }
+  .hero h1 { font-size: 40px; margin-top: 24px; }
   .hero-description { font-size: 13px; }
   .hero-label { font-size: 7px; letter-spacing: 1px; }
   .hero-actions { gap: 10px; flex-wrap: wrap; }

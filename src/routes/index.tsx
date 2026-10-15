@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ArrowUpRight, BookOpen, Braces, Check, ChevronDown, Code2, Coffee, ExternalLink, GitBranch, GitFork, Github, Globe2, Heart, Instagram, Linkedin, Mail, Menu, MessageSquare, Sparkles, Terminal, Users, UserRound, X, Zap } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BookOpen, Braces, Check, Code2, Coffee, ExternalLink, GitBranch, GitFork, Github, Globe2, Heart, Instagram, Linkedin, Mail, Menu, Terminal, Users, UserRound, X, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { RevealPage } from '@/components/community/reveal';
@@ -82,7 +82,7 @@ function Index() {
       </div>
       {menuOpen && <nav id="mobile-navigation" aria-label="Mobile navigation" className="flex flex-col gap-1 border-b border-border bg-background px-5 py-5 lg:hidden">{navigation.map(name => <a key={name} href={`#${name.toLowerCase()}`} className="nav-link py-3" onClick={() => setMenuOpen(false)}>{name}</a>)}<Button variant="community" className="mt-3" onClick={() => { setMenuOpen(false); placeholder('Join the Community'); }}>Join the Community <ArrowUpRight /></Button></nav>}
     </header>
-    <main id="main">
+    <main id="main" tabIndex={-1}>
       <section id="home" className="hero">
         <div className="container-wide hero-content">
           <div data-reveal className="hero-label eyebrow"><span className="status-dot" /> OPEN SOURCE · COLLABORATION · INNOVATION</div>
@@ -100,7 +100,7 @@ function Index() {
               <div className="terminal-line"><span className="text-primary">✓</span> First step taken. Let's build something together. <span className="cursor" /></div>
             </div>
           </div>
-          <div className="hero-coordinate">23.1667° N<br />88.4667° E<br /><span className="text-primary">KALYANI, INDIA</span></div>
+          <div className="hero-coordinate">FREE SOFTWARE<br />SHARED KNOWLEDGE<br /><span className="text-primary">KALYANI, INDIA</span></div>
           <div className="hero-coordinate right">BUILT ON CURIOSITY<br />POWERED BY COMMUNITY<br /><span className="text-primary">&lt; OPEN BY DEFAULT / &gt;</span></div>
         </div>
       </section>
