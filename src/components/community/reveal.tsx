@@ -7,7 +7,7 @@ export function RevealPage({ children }: { children: ReactNode }) {
     if (!element || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     // Reveal text independently inside existing cards and footer groups without
     // adding wrappers that could affect their layout or hover transforms.
-    element.querySelectorAll('.feature-card h3, .feature-card p, .feature-card button, .feature-card a, .tech-tag, footer h2, footer p, footer nav, footer button, .principle-strip-inner > span').forEach(node => {
+    element.querySelectorAll('.feature-card h3, .feature-card p, .feature-card button, .tech-tag, footer h2, footer p, footer nav, footer button, .principle-strip-inner > span').forEach(node => {
       node.setAttribute('data-reveal', '');
       if (node.matches('.tech-tag')) {
         const siblings = Array.from(node.parentElement?.children ?? []);
