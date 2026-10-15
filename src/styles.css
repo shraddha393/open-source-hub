@@ -115,6 +115,9 @@
 .project-body .card-heading { margin: 14px 0 10px; }
 .tech-tag { font: 9px var(--font-mono); color: var(--muted-foreground); border: 1px solid var(--border); border-radius: 4px; padding: 4px 7px; }
 .team-photo { height: 170px; position: relative; display: grid; place-items: center; background: var(--secondary); overflow: hidden; color: var(--muted-foreground); }
+.team-link { transition: background 200ms, border-color 200ms, transform 200ms, color 200ms; }
+.team-link:hover { transform: translateY(-2px); border-color: color-mix(in oklab, var(--primary) 45%, var(--border)); background: color-mix(in oklab, var(--primary) 8%, var(--card)); color: var(--primary); }
+
 .team-photo::before { content: ''; position: absolute; height: 110px; width: 110px; border: 1px solid var(--border); border-radius: 50%; }
 .team-photo svg { height: 58px; width: 58px; stroke-width: 1; opacity: .5; }
 .join-section { padding: 88px 0; text-align: center; position: relative; background-image: var(--hero-glow), linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: auto, 48px 48px, 48px 48px; border-block: 1px solid var(--border); }

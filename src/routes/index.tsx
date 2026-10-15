@@ -39,6 +39,11 @@ const projects = [
   { title: 'OpenConnect', description: 'A community platform concept to help student developers find collaborators and share ideas.', tags: ['React', 'TypeScript', 'Node.js'] },
   { title: 'DevKit', description: 'A collection concept for useful developer utilities, scripts, and open-source starter templates.', tags: ['JavaScript', 'Shell', 'Markdown'] },
 ];
+const team = [
+  { name: 'Ayush Lahiri', role: 'Lead', linkedin: 'https://www.linkedin.com/in/ayush-lahiri?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+  { name: 'Sahil Sujit Singh', role: 'Mentor', linkedin: 'https://www.linkedin.com/in/sahilssingh04?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+];
+
 
 function Brand() {
   return <a href="#home" className="flex shrink-0 items-center gap-3" aria-label="FOSS IIIT Kalyani home"><img src={officialLogo.url} alt="FOSS Club — Indian Institute of Information and Technology, Kalyani" width={2865} height={624} className="official-logo" /></a>;
