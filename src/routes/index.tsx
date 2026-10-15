@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import { RevealPage } from '@/components/community/reveal';
 import { ProjectArt } from '@/components/community/project-art';
+import officialLogo from '@/assets/foss-iiit-kalyani-logo.png.asset.json';
 
 export const Route = createFileRoute('/')({
   head: () => ({ meta: [
@@ -39,7 +40,7 @@ const projects = [
 ];
 
 function Brand() {
-  return <a href="#home" className="flex items-center gap-3" aria-label="FOSS IIIT Kalyani home"><span className="brand-symbol">{'< / >'}</span><span className="flex flex-col gap-1"><span className="brand-text">FOSS<span className="text-primary">.</span></span><span className="brand-sub">IIIT KALYANI</span></span></a>;
+  return <a href="#home" className="flex shrink-0 items-center gap-3" aria-label="FOSS IIIT Kalyani home"><img src={officialLogo.url} alt="FOSS Club — Indian Institute of Information and Technology, Kalyani" width={2865} height={624} className="official-logo" /></a>;
 }
 
 function SectionLabel({ number, children }: { number: string; children: React.ReactNode }) {
