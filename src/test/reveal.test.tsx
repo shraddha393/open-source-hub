@@ -21,7 +21,12 @@ describe('Once-only accessible scroll reveals', () => {
     const text = container.querySelector('p');
     if (!text || !notify) throw new Error('Reveal was not registered');
     expect(observe).toHaveBeenCalledWith(text);
-    act(() => notify?.([{ target: text, isIntersecting: true } as IntersectionObserverEntry], observer as unknown as IntersectionObserver));
+    const entry: IntersectionObserverEntry = {
+      target: text, isIntersecting: true, intersectionRatio: 1,
+      boundingClientRect: text.getBoundingClientRect(),
+      intersectionRect: text.getBoundingClientRect(), rootBounds: null, time: 0,
+    };
+    act(() => notify?.([entry], observer as unknown as IntersectionObserver));
     expect(text).toHaveClass('is-visible');
     expect(unobserve).toHaveBeenCalledWith(text);
   });
