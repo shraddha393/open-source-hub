@@ -21,6 +21,12 @@ export const Route = createFileRoute('/')({
 
 const navigation = ['Home', 'About', 'Activities', 'Projects', 'Team', 'Contact'];
 const communityUrl = 'https://t.me/fossclubiiitkalyani';
+const officialLinks = {
+  github: 'https://github.com/FOSS-Club-IIIT-Kalyani',
+  linkedin: 'https://www.linkedin.com/company/fossunited/',
+  instagram: 'https://www.instagram.com/fossiiitkalyani',
+  email: 'fossclub.iiitkalyani@gmail.com',
+};
 const values = [
   { icon: BookOpen, title: 'Learn Together', description: 'From your first terminal command to your first pull request. Ask questions, share what you know, and learn at your own pace.' },
   { icon: GitBranch, title: 'Build in Public', description: 'Ideas get better when they’re shared. Write code transparently, exchange feedback, and create things anyone can use.' },
@@ -133,7 +139,31 @@ function Index() {
       </div></section>
       <section id="join" className="join-section"><div className="container-wide"><div data-reveal className="mx-auto mb-5 icon-tile"><GitFork size={21} /></div><div data-reveal className="eyebrow justify-center">A LITTLE CURIOSITY GOES A LONG WAY</div><h2 data-reveal data-delay="1" className="section-heading">Your First Contribution<br />Starts <span className="text-primary">Here.</span></h2><p data-reveal data-delay="2" className="section-description">You don't need to be an expert to get started. Learn, experiment, collaborate, and make your first open-source contribution with us.</p><div data-reveal data-delay="3" className="hero-actions"><Button asChild variant="community" className="h-11 px-5 text-xs"><a href={communityUrl} target="_blank" rel="noopener noreferrer">Join the Community <ArrowRight /></a></Button><Button variant="communityOutline" className="h-11 px-5 text-xs" onClick={()=>placeholder('FOSS IIIT Kalyani GitHub')}><Github /> Explore GitHub</Button></div><p data-reveal data-delay="4" className="mt-5 font-mono text-[9px] text-muted-foreground">OFFICIAL COMMUNITY LINKS COMING SOON</p></div></section>
     </main>
-    <footer id="contact" className="container-wide"><div className="footer-grid"><div data-reveal><Brand /><p className="mt-5 max-w-80 text-xs leading-7 text-muted-foreground">Free and Open Source Software community at IIIT Kalyani. Learning together. Building in public. Open by default.</p><div className="mt-5 flex items-center gap-2 font-mono text-[9px] text-muted-foreground"><span className="status-dot" /> KALYANI, WEST BENGAL, INDIA</div></div><div data-reveal data-delay="1"><h2 className="footer-title">Explore</h2><nav aria-label="Footer navigation" className="grid grid-cols-2 gap-x-5 gap-y-4">{navigation.map(name=><a key={name} href={`#${name.toLowerCase()}`} className="nav-link">{name}</a>)}</nav></div><div data-reveal data-delay="2"><h2 className="footer-title">Let’s connect</h2><div className="flex gap-1">{[{name:'GitHub',icon:Github},{name:'LinkedIn',icon:Linkedin},{name:'Instagram',icon:Instagram},{name:'Email',icon:Mail}].map(social=><Button key={social.name} variant="communityOutline" size="icon" className="mr-1" aria-label={`${social.name} (official link pending)`} title={`${social.name} — link pending`} onClick={()=>placeholder(`Official ${social.name}`)}><social.icon /></Button>)}</div><p className="mt-4 font-mono text-[9px] leading-5 text-muted-foreground">Verified social & contact<br />links will be added here.</p></div></div><div data-reveal className="footer-bottom"><span>© {new Date().getFullYear()} FOSS IIIT Kalyani. Open minds. Open source.</span><span className="flex items-center gap-2">Made with <Heart size={11} className="text-primary" /> & a love for open source <span className="text-primary">{'</>'}</span></span></div></footer>
+    <footer id="contact" className="container-wide"><div className="footer-grid"><div data-reveal><Brand /><p className="mt-5 max-w-80 text-xs leading-7 text-muted-foreground">Free and Open Source Software community at IIIT Kalyani. Learning together. Building in public. Open by default.</p><div className="mt-5 flex items-center gap-2 font-mono text-[9px] text-muted-foreground"><span className="status-dot" /> KALYANI, WEST BENGAL, INDIA</div></div><div data-reveal data-delay="1"><h2 className="footer-title">Explore</h2><nav aria-label="Footer navigation" className="grid grid-cols-2 gap-x-5 gap-y-4">{navigation.map(name=><a key={name} href={`#${name.toLowerCase()}`} className="nav-link">{name}</a>)}</nav></div><div data-reveal data-delay="2"><h2 className="footer-title">Let’s connect</h2><div className="flex flex-wrap gap-2">
+  {[
+    { name: 'GitHub', icon: Github, href: officialLinks.github },
+    { name: 'LinkedIn', icon: Linkedin, href: officialLinks.linkedin },
+    { name: 'Instagram', icon: Instagram, href: officialLinks.instagram },
+    { name: 'Email', icon: Mail, href: officialLinks.email },
+  ].map((social) => (
+    <Button
+      key={social.name}
+      asChild
+      variant="communityOutline"
+      size="icon"
+      aria-label={social.name}
+      title={social.name}
+    >
+      <a
+        href={social.href}
+        target={social.name === 'Email' ? undefined : '_blank'}
+        rel={social.name === 'Email' ? undefined : 'noopener noreferrer'}
+      >
+        <social.icon />
+      </a>
+    </Button>
+  ))}
+</div><p className="mt-4 font-mono text-[9px] leading-5 text-muted-foreground">Verified social & contact<br />links will be added here.</p></div></div><div data-reveal className="footer-bottom"><span>© {new Date().getFullYear()} FOSS IIIT Kalyani. Open minds. Open source.</span><span className="flex items-center gap-2">Made with <Heart size={11} className="text-primary" /> & a love for open source <span className="text-primary">{'</>'}</span></span></div></footer>
     <Dialog open={destination !== null} onOpenChange={open => { if (!open) setDestination(null); }}><DialogContent className="max-w-[calc(100%-32px)] sm:max-w-md"><div className="icon-tile"><ExternalLink size={20} /></div><DialogTitle>{destination}</DialogTitle><DialogDescription className="leading-7">This is a placeholder. The verified official link has not been provided yet. We’ll share it here once it’s available.</DialogDescription><Button variant="community" onClick={()=>setDestination(null)}>Got it <Check /></Button></DialogContent></Dialog>
   </RevealPage>;
 }
