@@ -61,6 +61,7 @@
 .site-nav { position: fixed; inset: 0 0 auto; z-index: 40; height: 84px; border-bottom: 1px solid transparent; transition: background 250ms, border-color 250ms; }
 .site-nav.scrolled, .site-nav.menu-open { background: color-mix(in oklab, var(--background) 92%, transparent); border-color: var(--border); backdrop-filter: blur(18px); }
 .brand-symbol { display: inline-flex; align-items: center; justify-content: center; color: var(--primary); font-family: var(--font-mono); font-size: 27px; font-weight: 600; }
+.official-logo { display: block; width: 164px; height: auto; aspect-ratio: 2865 / 624; object-fit: contain; }
 .brand-text { font-size: 18px; font-weight: 750; }
 .brand-sub { font: 9px var(--font-mono); color: var(--muted-foreground); letter-spacing: 2px; }
 .nav-link { font-size: 12px; color: var(--muted-foreground); transition: color 180ms; }
@@ -129,6 +130,7 @@
 [data-delay='3'] { transition-delay: 300ms !important; }
 [data-delay='4'] { transition-delay: 400ms !important; }
 [data-delay='5'] { transition-delay: 500ms !important; }
+[data-delay='6'] { transition-delay: 600ms !important; }
 .community-button { transition: background 200ms, transform 150ms; }
 .community-button:active { transform: scale(.97); }
 @keyframes terminal-in { to { opacity: 1; } }

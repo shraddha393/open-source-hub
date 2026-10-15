@@ -12,5 +12,6 @@
 ## Application rules
 - Keep the community site as a single index page with real section IDs for anchor navigation, as requested for the long-scrolling experience.
 - Keep reusable scroll reveals and project concept illustrations in community components; use native IntersectionObserver to avoid additional animation dependencies.
+- Keep nested card and footer text reveal targeting in RevealPage without layout wrappers, so animation coverage does not change the page structure.
 - Unavailable official destinations must open an explanatory dialog, never point to invented external accounts.
 - Define visual styling and semantic color tokens in the global stylesheet and use design-system buttons for controls.
